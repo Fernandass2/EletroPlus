@@ -8,99 +8,138 @@
 /* Definindo um estilo geral para o body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Fundo claro */
-    color: #333; /* Texto em cor escura */
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 /* Estilos para o título h1 */
 .titulo {
-    text-align: center; /* Centraliza o título */
-    font-size: 28px; /* Tamanho do texto */
-    margin-top: 30px; /* Espaçamento superior */
-    margin-bottom: 30px; /* Espaçamento entre o título e os ícones */
-    color: #333; /* Cor do texto */
-    font-weight: bold; /* Deixa o texto em negrito */
+    text-align: center;
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
 }
 
 /* Estilos para o título h2 (mensagem) */
 .mensagem {
-    text-align: center; /* Centraliza o texto */
-    font-size: 22px; /* Tamanho do texto */
-    margin-bottom: 20px; /* Espaçamento abaixo */
-    color: #555; /* Cor do texto mais suave */
-    font-weight: normal; /* Deixa o texto normal */
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #555;
+    font-weight: normal;
 }
 
 /* Estilos para o título h3 (subtítulo) */
 .subtitulo {
-    text-align: center; /* Centraliza o subtítulo */
-    font-size: 20px; /* Tamanho do texto */
-    margin-bottom: 40px; /* Espaço entre o subtítulo e os ícones */
-    color: #555; /* Cor do texto */
-    font-weight: normal; /* Texto normal para o subtítulo */
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 40px;
+    color: #555;
+    font-weight: normal;
 }
 
 /* Estilos para o container que contém os ícones */
 .container {
-    margin-top: 50px; /* Espaço superior */
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Estilo para cada linha */
 .row {
     display: flex;
-    justify-content: space-around; /* Espaça igualmente entre os ícones */
-    gap: 20px; /* Espaçamento entre os ícones */
-    margin-bottom: 30px; /* Espaçamento entre as linhas */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
 }
 
-/* Estilo para cada item (texto + ícone) */
+/* Estilo para cada item (ícone) */
 .col-md-4, .col-md-6 {
-    text-align: center; /* Centraliza o texto e o ícone */
+    flex: 1 1 200px;
+    max-width: 200px;
+    text-align: center;
 }
 
-/* Estilo para o texto */
-.col-md-4 p, .col-md-6 p {
-    font-size: 14px;
-    margin-bottom: 10px; /* Espaço entre o texto e o ícone */
-}
-
-/* Estilo individual para os ícones */
+/* Estilo para os ícones */
 .container img {
-    width: 120px; /* Largura fixa para os ícones */
-    height: 120px; /* Altura fixa para os ícones */
-    cursor: pointer; /* Aponta o cursor para o ícone */
-    transition: transform 0.3s ease; /* Transição suave para o efeito de hover */
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Diminuir o botão do suporte */
+.col-md-6 img[alt='ajuda'] {
+    width: 90px;
+    height: 90px;
+    background-color: #dc3545;
+}
+
+/* Adicionar cor ao botão de clientes e OS */
+.col-md-4 img[alt='clientes'] {
+    background-color: #007bff;
+}
+
+.col-md-4 img[alt='computador'] {
+    background-color: #28a745;
+}
+
+/* Adicionar cor ao botão de configurações */
+.col-md-4 img[alt='configurações'] {
+    background-color: #ffc107;
+}
+
+/* Adicionar cor ao botão de relatórios */
+.col-md-6 img[alt='relatórios'] {
+    background-color: #6f42c1;
+}
+
+/* Efeito de hover apenas nos botões de clientes e OS */
+.col-md-4 img[alt='clientes']:hover {
+    background-color: #0056b3;
+}
+
+.col-md-4 img[alt='computador']:hover {
+    background-color: #218838;
 }
 
 /* Efeito de hover nos ícones */
 .container img:hover {
-    transform: scale(1.1); /* Aumenta um pouco o tamanho ao passar o mouse */
+    transform: scale(1.1);
 }
 
 /* Estilo para o rodapé */
 footer {
     text-align: center;
-    background-color: #333; /* Cor cinza para o rodapé */
-    padding: 10px 0; /* Espaçamento acima e abaixo */
+    background-color: #333;
+    padding: 10px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
 }
 
 footer p {
-    color: #fff; /* Cor branca para o texto da data */
+    color: #fff;
     font-size: 14px;
 }
 
-/* Responsividade: Alinha os itens de forma adequada em telas menores */
+/* Responsividade: Alinha os itens corretamente em telas menores */
 @media (max-width: 768px) {
     .row {
-        flex-direction: column; /* Coloca os ícones em coluna */
-        align-items: center; /* Alinha os ícones no centro */
+        flex-direction: column;
+        align-items: center;
     }
 
     .container img {
-        width: 100px; /* Ajusta o tamanho dos ícones em telas menores */
+        width: 100px;
         height: 100px;
     }
 }

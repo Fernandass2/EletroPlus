@@ -1,0 +1,136 @@
+/* --- Reset básico e centralização --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Impede qualquer rolagem nas páginas */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 0;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* --- Estilo global --- */
+h1, h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+/* --- Formulários e inputs --- */
+form {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+    max-width: 100%;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 8px;
+    display: block;
+    font-size: 0.9rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* --- Botões --- */
+button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.sair-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+.sair-btn:hover {
+    background-color: #c82333;
+}
+
+/* --- Estilo específico para as páginas de configuração e ajuda --- */
+.configuracoes-container, .ajuda-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: calc(100% - 40px); /* Ajusta a altura do container */
+    overflow: hidden; /* Impede rolagem nas páginas */
+}
+
+/* --- Responsividade para dispositivos móveis --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    input, select, button {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .sair-btn, .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

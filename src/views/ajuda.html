@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuda</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/unico.css">
+</head>
+
+<body>
+    <div class="container ajuda-container">
+        <h1>Ajuda e Suporte</h1>
+        <p>Encontre respostas para suas dúvidas aqui.</p>
+
+        <!-- Seção de tópicos de ajuda -->
+        <div class="help-topics">
+            <div class="topic">
+                <h3>Como cadastrar um cliente?</h3>
+                <p>Para cadastrar um novo cliente, clique no botão 'Cadastro de Clientes' na tela inicial. Preencha os dados e clique em 'Salvar'.</p>
+            <div class="topic">
+                <h3>Como emitir uma Ordem de Serviço (OS)?</h3>
+                <p>Na tela principal, clique em 'Emissão de OS'. Escolha o cliente, selecione o serviço desejado e clique em 'Emitir OS'.</p>
+            <div class="topic">
+            </div>
+        <!-- Botão Sair -->
+        <button class="btn sair-btn" onclick="fecharJanela()">Sair</button>
+    </div>
+
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/script.js"></script>
+
+    <script>
+        // Função para fechar a janela
+        function fecharJanela() {
+            window.close(); // Fecha a janela atual
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem de Serviço</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../public/css/unico.css">
+    <!-- Segurança -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Ordem de Serviço</h1>
+        
+        <form id="formOS">
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" required>
+
+            <label for="equipamento">Equipamento:</label>
+            <input type="text" id="equipamento" name="equipamento" required>
+
+            <label for="descricao">Descrição do Problema:</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+            <button type="submit" class="btn cadastrar">Cadastrar OS</button>
+        </form>
+
+        <button class="btn sair" onclick="fecharJanela()">Sair</button>
+    </div>
+
+    <script>
+        function fecharJanela() {
+            window.close(); // Fecha a janela atual
+        }
+    </script>
+</body>
+</html>

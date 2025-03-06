@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../public/css/unico.css">
+    <!-- Impedir a execução de scripts externos ou não autorizados -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Relatórios</h1>
+        
+        <!-- Formulário de Relatórios -->
+        <form>
+            <div class="form-group">
+                <label for="clientes">Relatório de Clientes</label>
+                <input type="text" id="clientes" class="form-control" placeholder="Informe o nome do cliente">
+            </div>
+
+            <div class="form-group">
+                <label for="osAbertas">Relatório de OS Abertas</label>
+                <input type="text" id="osAbertas" class="form-control" placeholder="Informe a OS aberta">
+            </div>
+
+            <div class="form-group">
+                <label for="osConcluidas">Relatório de OS Concluídas</label>
+                <input type="text" id="osConcluidas" class="form-control" placeholder="Informe a OS concluída">
+            </div>
+
+            <!-- Botões -->
+            <div class="btn-group w-100">
+                <button type="button" class="btn btn-primary">Gerar Relatório</button>
+                <button type="button" class="btn btn-danger" onclick="window.close()">Sair</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../public/js/bootstrap.min.js"></script>
+</body>
+
+</html>

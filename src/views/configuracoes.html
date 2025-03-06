@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/unico.css">
+</head>
+
+<body>
+    <div class="container configurações-container">
+        <h1>Configurações do Sistema</h1>
+        <p>Personalize as opções abaixo de acordo com suas preferências.</p>
+
+        <!-- Seção de Configurações -->
+        <form class="form-configuracoes">
+            <div class="config-section">
+                <h3>Geral</h3>
+                <div class="form-group">
+                    <label for="empresaNome">Nome da Empresa:</label>
+                    <input type="text" id="empresaNome" class="form-control" placeholder="Digite o nome da sua empresa">
+                </div>
+                <div class="form-group">
+                    <label for="emailSuporte">Email para Suporte:</label>
+                    <input type="email" id="emailSuporte" class="form-control" placeholder="suporte@empresa.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefoneSuporte">Telefone para Suporte:</label>
+                    <input type="tel" id="telefoneSuporte" class="form-control" placeholder="(XX) XXXX-XXXX">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Salvar Configurações</button>
+        </form>
+
+        <!-- Botão Sair -->
+        <button class="btn sair-btn" onclick="window.location.href = 'configguracoes.html';">Sair</button>
+    </div>
+
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+Página de Configurações:
+
+Objetivo: Permite ao usuário personalizar as opções do sistema.
+Seções:
+Geral: Onde o usuário pode inserir o nome da empresa, email de suporte e telefone de suporte.
+Preferências: Onde o usuário pode escolher entre o tema claro ou escuro e ativar ou desativar notificações.
+Segurança: Onde o usuário pode alterar a senha, informando a senha atual e a nova senha.
+Funcionalidade: Possui um formulário para coleta de dados do usuário com campos para alterar configurações do sistema e uma opção de logout (botão "Sair").
+Página de Suporte:
+
+Objetivo: Fornece informações de ajuda e suporte técnico.
+Seções:
+Tópicos de ajuda, com diferentes seções de conteúdo explicativo (como "Como criar uma OS", "Cadastro de clientes", etc).
+Cada tópico pode ter uma breve descrição, geralmente com links ou detalhes adicionais.
+Página de Cadastro de Clientes:
+
+Objetivo: Permite o cadastro de novos clientes no sistema.
+Seções:
+Formulário de cadastro de clientes com campos como nome, email, telefone, endereço e outros dados necessários para adicionar um cliente.
+Página de Cadastro de Ordens de Serviço (OS):
+
+Objetivo: Facilita a criação de ordens de serviço para os clientes.
+Seções:
+Formulário para criação da ordem de serviço, com campos como nome do cliente, descrição do problema, status da OS, etc.
+Página de Relatórios:
+
+Objetivo: Exibe os relatórios de clientes e ordens de serviço.
+Seções:
+Relatórios sobre os clientes cadastrados, ordens de serviço abertas e ordens de serviço concluídas, com a possibilidade de visualização e ações específicas.
+Página de Ajuda:
+
+Objetivo: Fornece informações detalhadas sobre o uso do sistema, auxiliando o usuário a entender melhor o funcionamento do sistema.
+Seções:
+Instruções e tópicos sobre como utilizar a plataforma, provavelmente com explicações sobre como usar a funcionalidade de cadastro de clientes, criação de ordens de serviço, e como acessar relatórios.
+Essas páginas fazem parte de um sistema de gerenciamento de ordens de serviço, onde o usuário pode configurar as preferências do sistema, cadastrar clientes e ordens de serviço, e consultar relatórios sobre essas informações.

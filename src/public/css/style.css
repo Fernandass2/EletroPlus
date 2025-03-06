@@ -1,0 +1,106 @@
+/* Resetando algumas margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo um estilo geral para o body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fundo claro */
+    color: #333; /* Texto em cor escura */
+}
+
+/* Estilos para o título h1 */
+.titulo {
+    text-align: center; /* Centraliza o título */
+    font-size: 28px; /* Tamanho do texto */
+    margin-top: 30px; /* Espaçamento superior */
+    margin-bottom: 30px; /* Espaçamento entre o título e os ícones */
+    color: #333; /* Cor do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+}
+
+/* Estilos para o título h2 (mensagem) */
+.mensagem {
+    text-align: center; /* Centraliza o texto */
+    font-size: 22px; /* Tamanho do texto */
+    margin-bottom: 20px; /* Espaçamento abaixo */
+    color: #555; /* Cor do texto mais suave */
+    font-weight: normal; /* Deixa o texto normal */
+}
+
+/* Estilos para o título h3 (subtítulo) */
+.subtitulo {
+    text-align: center; /* Centraliza o subtítulo */
+    font-size: 20px; /* Tamanho do texto */
+    margin-bottom: 40px; /* Espaço entre o subtítulo e os ícones */
+    color: #555; /* Cor do texto */
+    font-weight: normal; /* Texto normal para o subtítulo */
+}
+
+/* Estilos para o container que contém os ícones */
+.container {
+    margin-top: 50px; /* Espaço superior */
+}
+
+/* Estilo para cada linha */
+.row {
+    display: flex;
+    justify-content: space-around; /* Espaça igualmente entre os ícones */
+    gap: 20px; /* Espaçamento entre os ícones */
+    margin-bottom: 30px; /* Espaçamento entre as linhas */
+}
+
+/* Estilo para cada item (texto + ícone) */
+.col-md-4, .col-md-6 {
+    text-align: center; /* Centraliza o texto e o ícone */
+}
+
+/* Estilo para o texto */
+.col-md-4 p, .col-md-6 p {
+    font-size: 14px;
+    margin-bottom: 10px; /* Espaço entre o texto e o ícone */
+}
+
+/* Estilo individual para os ícones */
+.container img {
+    width: 120px; /* Largura fixa para os ícones */
+    height: 120px; /* Altura fixa para os ícones */
+    cursor: pointer; /* Aponta o cursor para o ícone */
+    transition: transform 0.3s ease; /* Transição suave para o efeito de hover */
+}
+
+/* Efeito de hover nos ícones */
+.container img:hover {
+    transform: scale(1.1); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
+/* Estilo para o rodapé */
+footer {
+    text-align: center;
+    background-color: #333; /* Cor cinza para o rodapé */
+    padding: 10px 0; /* Espaçamento acima e abaixo */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    color: #fff; /* Cor branca para o texto da data */
+    font-size: 14px;
+}
+
+/* Responsividade: Alinha os itens de forma adequada em telas menores */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Coloca os ícones em coluna */
+        align-items: center; /* Alinha os ícones no centro */
+    }
+
+    .container img {
+        width: 100px; /* Ajusta o tamanho dos ícones em telas menores */
+        height: 100px;
+    }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que será exibido na janela -->
+    <title>EletroPlus</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../public/css/style.css">
+    <!-- Impedir a execução de scripts externos ou não autorizados -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+</head>
+
+<body>
+    <h1 class="titulo">Bem-vindo ao EletroPlus</h1> <!-- Título principal adicionado -->
+    <h2 class="mensagem">Sua plataforma de serviços para eletrodomésticos</h2> <!-- Mensagem no h2 -->
+    <h3 class="subtitulo">Acesse os serviços abaixo</h3> <!-- Subtítulo h3 -->
+
+
+    <div class="container">
+        <div class="row">
+            <!-- Primeira linha com 3 ícones -->
+            <div class="col-md-4 text-center">
+                <img src="../public/img/clientes.png" alt="clientes" title="Cadastro de clientes" onclick="cliente()">
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="../public/img/os.png" alt="computador" title="Emissão de OS" onclick="os()">
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="../public/img/configuracoes.png" alt="configurações" title="Configurações" onclick="configuracoes()">
+            </div>
+        </div>
+        <div class="row">
+            <!-- Segunda linha com 2 ícones -->
+            <div class="col-md-6 text-center">
+                <img src="../public/img/relatorio.png" alt="relatórios" title="Relatórios" onclick="relatorios()">
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../public/img/ajuda.png" alt="ajuda" title="Ajuda" onclick="ajuda()">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p id="dataAtual"></p>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script src="../public/js/bootstrap.min.js"></script>
+    <!-- Scripts -->
+    <script src="../public/js/script.js"></script>
+    <!-- Renderizador -->
+    <script src=".../public./js./renderer.js"></script>
+
+    <!-- Funções de interação com o Preload -->
+    <script>
+        function cliente() {
+            window.api.clientWindow(); // Abre a janela de Clientes
+        }
+
+        function os() {
+            window.api.osWindow(); // Abre a janela de OS
+        }
+
+        function configuracoes() {
+            window.api.configuracoesWindow(); // Abre a janela de Configurações
+        }
+
+        function suporte() {
+            window.api.suportetWindow(); // Abre a janela de Suporte
+        }
+
+        // Novas funções para os novos itens
+        function relatorios() {
+            window.api.relatoriosWindow(); // Abre a janela de Relatórios
+        }
+
+        function ajuda() {
+            window.api.ajudaWindow(); // Abre a janela de Ajuda
+        }
+    </script>
+</body>
+
+</html>

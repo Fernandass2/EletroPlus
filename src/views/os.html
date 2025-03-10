@@ -3,38 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordem de Serviço</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="../public/css/unico.css">
-    <!-- Segurança -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Ordem de Serviço - EletroPlus</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .back-btn:hover {
+            color: #4CAF50;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        .logout-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Cadastro de Ordem de Serviço</h1>
+        <h1>Ordem de Serviço</h1>
         
-        <form id="formOS">
-            <label for="cliente">Cliente:</label>
-            <input type="text" id="cliente" name="cliente" required>
+        <!-- Formulário de Ordem de Serviço -->
+        <form action="processar_os.php" method="POST">
+            <div class="form-group">
+                <label for="cliente">Cliente</label>
+                <input type="text" id="cliente" name="cliente" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="produto">Produto</label>
+                <input type="text" id="produto" name="produto" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="defeito">Defeito</label>
+                <input type="text" id="defeito" name="defeito" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="data">Data de Abertura</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tecnico">Técnico Responsável</label>
+                <input type="text" id="tecnico" name="tecnico" required>
+            </div>
 
-            <label for="equipamento">Equipamento:</label>
-            <input type="text" id="equipamento" name="equipamento" required>
-
-            <label for="descricao">Descrição do Problema:</label>
-            <textarea id="descricao" name="descricao" rows="4" required></textarea>
-
-            <button type="submit" class="btn cadastrar">Cadastrar OS</button>
+            <button type="submit" class="submit-btn">Criar Ordem de Serviço</button>
         </form>
+        
+        <!-- Link para retornar à Lista de Ordens de Serviço -->
+        <a href="relatorios.html" class="back-btn">Voltar à Lista de Ordens de Serviço</a>
 
-        <button class="btn sair" onclick="fecharJanela()">Sair</button>
+        <!-- Botão de Sair -->
+        <button class="logout-btn" onclick="window.close()">Sair</button>
     </div>
 
-    <script>
-        function fecharJanela() {
-            window.close(); // Fecha a janela atual
-        }
-    </script>
 </body>
 </html>

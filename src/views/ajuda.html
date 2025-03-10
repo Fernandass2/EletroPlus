@@ -1,42 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajuda</title>
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/unico.css">
-</head>
-
-<body>
-    <div class="container ajuda-container">
-        <h1>Ajuda e Suporte</h1>
-        <p>Encontre respostas para suas dúvidas aqui.</p>
-
-        <!-- Seção de tópicos de ajuda -->
-        <div class="help-topics">
-            <div class="topic">
-                <h3>Como cadastrar um cliente?</h3>
-                <p>Para cadastrar um novo cliente, clique no botão 'Cadastro de Clientes' na tela inicial. Preencha os dados e clique em 'Salvar'.</p>
-            <div class="topic">
-                <h3>Como emitir uma Ordem de Serviço (OS)?</h3>
-                <p>Na tela principal, clique em 'Emissão de OS'. Escolha o cliente, selecione o serviço desejado e clique em 'Emitir OS'.</p>
-            <div class="topic">
-            </div>
-        <!-- Botão Sair -->
-        <button class="btn sair-btn" onclick="fecharJanela()">Sair</button>
-    </div>
-
-    <script src="../public/js/bootstrap.min.js"></script>
-    <script src="../public/js/script.js"></script>
-
+    <title>Ajuda - EletroPlus</title>
     <script>
-        // Função para fechar a janela
+        // Função para fechar a janela atual
         function fecharJanela() {
-            window.close(); // Fecha a janela atual
+            window.close();
         }
     </script>
-</body>
+    <style>
+        /* Resetando margens e padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 1010px;
+            height: 720px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: hidden; /* Evita que o conteúdo ultrapasse o tamanho da tela */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #1d3557;
+        }
+
+        section {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-left: 20px;
+        }
+
+        ul li {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        button {
+            background-color: #e63946;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-self: center;
+        }
+
+        button:hover {
+            background-color: #d62828;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ajuda</h1>
+        </header>
+        
+        <section>
+            <h2>Como podemos te ajudar?</h2>
+            <p>Se você tiver dúvidas sobre o funcionamento do sistema ou algum problema, consulte a seção abaixo ou entre em contato conosco.</p>
+            <p>Confira as opções e tutoriais disponíveis para facilitar o uso do sistema:</p>
+            <ul>
+                <li><strong>Emissão de Ordem de Serviço:</strong> Veja como gerar e gerenciar ordens de serviço.</li>
+                <li><strong>Cadastro de Clientes:</strong> Como cadastrar novos clientes no sistema.</li>
+                <li><strong>Configurações do Sistema:</strong> Entenda como personalizar as configurações do EletroFix.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Contato</h2>
+            <p>Se precisar de mais ajuda, entre em contato com nosso suporte:</p>
+            <ul>
+                <li><strong>Telefone:</strong> (XX) XXXX-XXXX</li>
+                <li><strong>E-mail:</strong> suporte@tecnofix.com.br</li>
+            </ul>
+        </section>
+
+        <section>
+            <button onclick="fecharJanela()">Sair</button>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 EletroPlus. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
 </html>

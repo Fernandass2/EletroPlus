@@ -4,25 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título que será exibido na janela -->
-    <title>EletroPlus</title>
+    <title>EletroPlus
+    </title>
+    
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="../public/css/style.css">
-    <!-- Impedir a execução de scripts externos ou não autorizados -->
+    
+    <!-- Segurança de scripts -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
 </head>
 
 <body>
-    <h1 class="titulo">Bem-vindo ao EletroPlus</h1> <!-- Título principal adicionado -->
-    <h2 class="mensagem">Sua plataforma de serviços para eletrodomésticos</h2> <!-- Mensagem no h2 -->
-    <h3 class="subtitulo">Acesse os serviços abaixo</h3> <!-- Subtítulo h3 -->
-
+    <h1 class="titulo">Bem-vindo ao EletroPlus</h1>
+    <h2 class="mensagem">Sua plataforma de serviços para eletrodomésticos</h2>
+    <h3 class="subtitulo">Acesse os serviços abaixo</h3>
 
     <div class="container">
         <div class="row">
-            <!-- Primeira linha com 3 ícones -->
             <div class="col-md-4 text-center">
                 <img src="../public/img/clientes.png" alt="clientes" title="Cadastro de clientes" onclick="cliente()">
             </div>
@@ -34,53 +35,71 @@
             </div>
         </div>
         <div class="row">
-            <!-- Segunda linha com 2 ícones -->
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                 <img src="../public/img/relatorio.png" alt="relatórios" title="Relatórios" onclick="relatorios()">
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                 <img src="../public/img/ajuda.png" alt="ajuda" title="Ajuda" onclick="ajuda()">
             </div>
         </div>
     </div>
 
     <footer>
-        <p id="dataAtual"></p>
+        <p id="dataatual"></p>
     </footer>
 
-    <!-- Bootstrap -->
-    <script src="../public/js/bootstrap.min.js"></script>
     <!-- Scripts -->
-    <script src="../public/js/script.js"></script>
-    <!-- Renderizador -->
-    <script src=".../public./js./renderer.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/renderer.js"></script>
 
-    <!-- Funções de interação com o Preload -->
     <script>
         function cliente() {
-            window.api.clientWindow(); // Abre a janela de Clientes
+            window.api.clientWindow();
         }
 
         function os() {
-            window.api.osWindow(); // Abre a janela de OS
+            window.api.osWindow();
         }
 
         function configuracoes() {
-            window.api.configuracoesWindow(); // Abre a janela de Configurações
+            window.api.configuracoesWindow();
         }
 
         function suporte() {
-            window.api.suportetWindow(); // Abre a janela de Suporte
+            window.api.suporteWindow();
         }
 
-        // Novas funções para os novos itens
         function relatorios() {
-            window.api.relatoriosWindow(); // Abre a janela de Relatórios
+            window.api.relatoriosWindow();
         }
 
         function ajuda() {
-            window.api.ajudaWindow(); // Abre a janela de Ajuda
+            window.api.ajudaWindow();
         }
+
+        function listacliente() {
+            window.api.listaclienteWindow(); // ✅ Corrigido
+        }
+
+          // Função para formatar a data no formato "Terça-Feira, 10 de Março de 2025"
+        function formatarDataCompleta(data) {
+            const diasDaSemana = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+            const meses = [
+                "janeiro", "fevereiro", "março", "abril", "maio", "junho", 
+                "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+            ];
+
+            const diaSemana = diasDaSemana[data.getDay()];
+            const dia = data.getDate().toString().padStart(2, '0');
+            const mes = meses[data.getMonth()];
+            const ano = data.getFullYear();
+
+            return `${diaSemana.charAt(0).toUpperCase() + diaSemana.slice(1)}, ${dia} de ${mes.charAt(0).toUpperCase() + mes.slice(1)} de ${ano}`;
+        }
+
+        // Exibe a data formatada no rodapé
+        const dataAtual = new Date();
+        document.getElementById("dataatual").innerText = formatarDataCompleta(dataAtual);
     </script>
 </body>
 

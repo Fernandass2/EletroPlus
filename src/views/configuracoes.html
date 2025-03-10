@@ -1,46 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurações</title>
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/unico.css">
+    <title>Configurações - EletroPlus</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="checkbox"], select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .back-btn:hover {
+            color: #4CAF50;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        .logout-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container configurações-container">
-        <h1>Configurações do Sistema</h1>
-        <p>Personalize as opções abaixo de acordo com suas preferências.</p>
 
-        <!-- Seção de Configurações -->
-        <form class="form-configuracoes">
-            <div class="config-section">
-                <h3>Geral</h3>
-                <div class="form-group">
-                    <label for="empresaNome">Nome da Empresa:</label>
-                    <input type="text" id="empresaNome" class="form-control" placeholder="Digite o nome da sua empresa">
-                </div>
-                <div class="form-group">
-                    <label for="emailSuporte">Email para Suporte:</label>
-                    <input type="email" id="emailSuporte" class="form-control" placeholder="suporte@empresa.com">
-                </div>
-                <div class="form-group">
-                    <label for="telefoneSuporte">Telefone para Suporte:</label>
-                    <input type="tel" id="telefoneSuporte" class="form-control" placeholder="(XX) XXXX-XXXX">
-                </div>
+    <div class="container">
+        <h1>Configurações</h1>
+        
+        <!-- Formulário de Configurações -->
+        <form action="processar_config.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email de Notificação</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="senha">Nova Senha</label>
+                <input type="password" id="senha" name="senha">
             </div>
 
-            <button type="submit" class="btn btn-success">Salvar Configurações</button>
-        </form>
+            <div class="form-group">
+                <label for="tema">Tema</label>
+                <select id="tema" name="tema">
+                    <option value="claro">Claro</option>
+                    <option value="escuro">Escuro</option>
+                </select>
+            </div>
 
-           <!-- Botão Sair -->
-           <button class="btn sair-btn" onclick="fecharJanela()">Sair</button>
+            <div class="form-group">
+                <label for="notificacoes">Receber Notificações?</label>
+                <input type="checkbox" id="notificacoes" name="notificacoes" checked>
+            </div>
+
+            <button type="submit" class="submit-btn">Salvar Configurações</button>
+        </form>
+        
+
+        <!-- Botão de Sair -->
+        <button class="logout-btn" onclick="window.close()">Sair</button>
     </div>
 
-    <script src="../public/js/bootstrap.min.js"></script>
-    <script src="../public/js/script.js"></script>
 </body>
-
 </html>

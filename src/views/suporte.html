@@ -1,41 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suporte</title>
-    <link rel="stylesheet" href="../public/css/unico.css">
+    <title>Suporte - EletroPlus</title>
+    <script>
+        // Função para fechar a janela atual
+        function fecharJanela() {
+            window.close();
+        }
+    </script>
+    <style>
+        /* Resetando algumas margens e espaçamentos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #1d3557;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-left: 20px;
+        }
+
+        ul li {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        button {
+            background-color: #e63946;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: -10px; /* Movendo o botão para cima */
+        }
+
+        button:hover {
+            background-color: #d62828;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container suporte-container">
+    <header>
         <h1>Suporte</h1>
-        <p>Tem alguma dúvida ou problema? Nossa equipe está aqui para ajudar!</p>
-        <!-- Seção de tópicos de suporte -->
-        <div class="help-topics">
-            <div class="topic">
-                <h4>Como cadastrar um cliente?</h4>
-                <p>Para cadastrar um novo cliente, clique no botão 'Cadastro de Clientes' na tela inicial.</p>
-            </div>
-
-            <div class="topic">
-                <h4>Como emitir uma Ordem de Serviço (OS)?</h4>
-                <p>Na tela principal, clique em 'Emissão de OS' e preencha as informações solicitadas.</p>
-            </div>
-
-            <div class="topic">
-                <h4>Como configurar a aplicação?</h4>
-                <p>A configuração do sistema pode ser feita na tela de configurações, acessível a partir da tela inicial.</p>
-            </div>
-
-             <!-- Botão Sair -->
-        <button class="btn sair-btn" onclick="fecharJanela()">Sair</button>
-
-        </div>
-    </div>
-
-    <script src="../public/js/script.js"></script>
+    </header>
+    
+    <section>
+        <h2>Como podemos ajudar?</h2>
+        <p>Se você encontrou algum problema com o sistema ou precisa de ajuda com algum processo, nossa equipe de suporte está pronta para auxiliá-lo.</p>
+        <p>Para assistência técnica, entre em contato conosco através do telefone ou e-mail:</p>
+        <ul>
+            <li><strong>Telefone:</strong> (XX) XXXX-XXXX</li>
+            <li><strong>E-mail:</strong> suporte@tecnofix.com.br</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h2>FAQ - Perguntas Frequentes</h2>
+        <ul>
+            <li><strong>Como faço para emitir uma ordem de serviço?</strong> - Acesse a seção "Ordem de Serviço" e preencha os dados necessários.</li>
+            <li><strong>Como cadastrar um cliente?</strong> - Vá até a seção "Cadastro de Clientes" e preencha as informações solicitadas.</li>
+            <li><strong>O que fazer se um problema persistir após a manutenção?</strong> - Entre em contato com o nosso suporte técnico para agendar uma nova visita.</li>
+        </ul>
+    </section>
+    
+    <section>
+        <button onclick="fecharJanela()">Sair</button>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 EletroPlus. Todos os direitos reservados.</p>
+    </footer>
 </body>
-
 </html>

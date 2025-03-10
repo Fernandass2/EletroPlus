@@ -42,3 +42,11 @@ function ajuda(){
     // Uso da API (autorizada no preload.js)
     api.ajudaWindow()
 }
+
+// Função para abrir a janela de Ajuda
+function listacliente(){
+    // console.log('Teste do botão Lista de Cliente')
+    // Uso da API (autorizada no preload.js)
+    api.listaclienteWindow()
+}
+

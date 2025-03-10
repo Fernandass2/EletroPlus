@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes - EletroPlus</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .add-client-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-client-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Lista de Clientes</h1>
+        
+        <!-- Botão para adicionar cliente (vinculado ao cadastro de cliente) -->
+        <a href="cliente.html" class="add-client-btn">Adicionar Novo Cliente</a>
+        
+        <!-- Tabela de Clientes -->
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui será carregado os clientes cadastrados -->
+                <tr>
+                    <td>1</td>
+                    <td>João Silva</td>
+                    <td>joao@exemplo.com</td>
+                    <td>(11) 98765-4321</td>
+                    <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ana Souza</td>
+                    <td>ana@exemplo.com</td>
+                    <td>(21) 12345-6789</td>
+                    <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
+                </tr>
+                <!-- Exemplo, os dados devem ser gerados dinamicamente a partir do cadastro -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -3,38 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Clientes</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="../public/css/unico.css">
-    <!-- Segurança -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>Cadastro de Cliente - EletroPlus</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .back-btn:hover {
+            color: #4CAF50;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        .logout-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Cadastro de Clientes</h1>
+        <h1>Cadastro de Cliente</h1>
         
-        <form id="formCliente">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+        <!-- Formulário de Cadastro de Cliente -->
+        <form action="processar_cadastro.php" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" id="cnpj" name="cnpj" required>
+            </div>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" required>
-
-            <button type="submit" class="btn cadastrar">Cadastrar Cliente</button>
+            <div class="form-group">
+                <label for="logradouro">Logradouro</label>
+                <input type="text" id="logradouro" name="logradouro" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Cadastrar Cliente</button>
         </form>
+        
+        <!-- Link para retornar à Lista de Clientes -->
+        <a href="listacliente.html" class="back-btn">Voltar à Lista de Clientes</a>
 
-        <button class="btn sair" onclick="fecharJanela()">Sair</button>
+        <!-- Botão de Sair -->
+        <button class="logout-btn" onclick="window.close()">Sair</button>
     </div>
 
-    <script>
-        function fecharJanela() {
-            window.close(); // Fecha a janela atual
-        }
-    </script>
 </body>
 </html>

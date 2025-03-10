@@ -38,6 +38,10 @@ const createWindow = () => {
     ipcMain.on('configuracoes-window', () => {
         configuracoesWindow()
     })
+    ipcMain.on('listacliente-window', () => {
+        listaclientewindow()
+    })
+  
 }
 
 // Janela Sobre
@@ -47,8 +51,8 @@ function aboutWindow() {
     let about
     if (main) {
         about = new BrowserWindow({
-            width: 360,
-            height: 220,
+            width: 660,
+            height: 420,
             autoHideMenuBar: true,
             resizable: false,
             minimizable: false,
@@ -138,8 +142,8 @@ function relatoriosWindow() {
     const main = BrowserWindow.getFocusedWindow()
     if (main) {
         relatorios = new BrowserWindow({
-            width: 800,
-            height: 600,
+            width: 1010,
+            height: 720,
             autoHideMenuBar: true,
             resizable: false,
             parent: main,
@@ -157,8 +161,8 @@ function ajudaWindow() {
     const main = BrowserWindow.getFocusedWindow()
     if (main) {
         ajuda = new BrowserWindow({
-            width: 600,
-            height: 400,
+            width: 1010,
+            height: 720,
             autoHideMenuBar: true,
             resizable: false,
             parent: main,
@@ -168,6 +172,24 @@ function ajudaWindow() {
     ajuda.loadFile('./src/views/ajuda.html')
     ajuda.center()
 }
+// Janela Listacliente
+let listacliente
+function listaclienteWindow (){
+    nativeTheme.themeSource = 'light'
+    const main = BrowserWindow.getFocusedWindow()
+    if (main) {
+        listacliente = new BrowserWindow({
+        width: 1010,
+        height: 720,
+        autoHideMenuBar: true,
+        resizable: false,
+        modal: true
+    })
+}
+    listacliente.loadFile('./src/views/listacliente.html')
+    listacliente.center()
+}
+
 
 // Iniciar a aplicação
 app.whenReady().then(() => {
@@ -206,6 +228,11 @@ const template = [
                 type: 'separator'
             },
             {
+                    label: 'Lista de Clientes', // Nova opção no menu
+                    click: () => listaclienteWindow() // Abre a lista de clientes
+            },
+        
+            {
                 label: 'Sair',
                 click: () => app.quit(),
                 accelerator: 'Alt+F4'
@@ -224,6 +251,10 @@ const template = [
     {
         label: 'Ferramentas',
         submenu: [
+            {
+                label: 'Configurações',
+                click: () => configuracoesWindow()
+            },  
             {
                 label: 'Aplicar zoom',
                 role: 'zoomIn'

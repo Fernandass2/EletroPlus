@@ -1,48 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatórios</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="../public/css/unico.css">
-    <!-- Impedir a execução de scripts externos ou não autorizados -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
-</head>
+    <title>Relatório de Ordens de Serviço - EletroPlus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 1010px;
+            background-color: #f4f4f4;
+        }
 
+        .container {
+            width: 100%;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #e63946;
+            color: white;
+        }
+
+        button {
+            background-color: #f1faee;
+            color: #e63946;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 2px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e63946;
+            color: white;
+        }
+
+        .btn-add {
+            margin-top: 20px;
+            background-color: #1d3557;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-add:hover {
+            background-color: #457b9d;
+        }
+
+        /* Estilo para o botão de Sair */
+        .btn-sair {
+            background-color: #f1faee;
+            color: #e63946;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-sair:hover {
+            background-color: #e63946;
+            color: white;
+        }
+
+    </style>
+</head>
 <body>
     <div class="container">
-        <h1>Relatórios</h1>
+        <h2>Relatório de Ordens de Serviço</h2>
         
-        <!-- Formulário de Relatórios -->
-        <form>
-            <div class="form-group">
-                <label for="clientes">Relatório de Clientes</label>
-                <input type="text" id="clientes" class="form-control" placeholder="Informe o nome do cliente">
-            </div>
+        <!-- Botão para adicionar nova OS que redireciona para os.html -->
+        <button class="btn-add" onclick="adicionarOS()">Adicionar Nova Ordem de Serviço</button>
 
-            <div class="form-group">
-                <label for="osAbertas">Relatório de OS Abertas</label>
-                <input type="text" id="osAbertas" class="form-control" placeholder="Informe a OS aberta">
-            </div>
+        <table id="relatorioTable">
+            <thead>
+                <tr>
+                    <th>Número OS</th>
+                    <th>Cliente</th>
+                    <th>Descrição</th>
+                    <th>Data de Entrada</th>
+                    <th>Data de Saída</th>
+                    <th>Status</th>
+                    <th>Ações</th> <!-- Coluna para ações -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As ordens de serviço serão exibidas aqui -->
+            </tbody>
+        </table>
 
-            <div class="form-group">
-                <label for="osConcluidas">Relatório de OS Concluídas</label>
-                <input type="text" id="osConcluidas" class="form-control" placeholder="Informe a OS concluída">
-            </div>
-
-            <!-- Botões -->
-            <div class="btn-group w-100">
-                <button type="button" class="btn btn-primary">Gerar Relatório</button>
-                <button type="button" class="btn btn-danger" onclick="window.close()">Sair</button>
-            </div>
-        </form>
+        <!-- Botão para sair e fechar a página -->
+        <a href="#" class="btn-sair" onclick="fecharTela()">Sair</a>
     </div>
 
-    <script src="../public/js/bootstrap.min.js"></script>
-</body>
+    <script>
+        // Função para carregar as ordens de serviço do localStorage e exibir na tabela
+        window.onload = function() {
+            var osList = JSON.parse(localStorage.getItem('osList')) || [];
+            var tableBody = document.getElementById("relatorioTable").getElementsByTagName("tbody")[0];
 
+            osList.forEach(function(os, index) {
+                var row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${os.numeroOS}</td>
+                    <td>${os.cliente}</td>
+                    <td>${os.descricao}</td>
+                    <td>${os.dataEntrada}</td>
+                    <td>${os.dataSaida}</td>
+                    <td>${os.status}</td>
+                    <td>
+                        <button onclick="editarOS(${index})">Editar</button>
+                        <button onclick="excluirOS(${index})">Excluir</button>
+                    </td>
+                `;
+            });
+        }
+
+        // Função para adicionar nova OS
+        function adicionarOS() {
+            var numeroOS = prompt("Número da OS");
+            var cliente = prompt("Nome do Cliente");
+            var descricao = prompt("Descrição do Serviço");
+            var dataEntrada = prompt("Data de Entrada");
+            var dataSaida = prompt("Data de Saída");
+            var status = "Em andamento"; // Status inicial
+
+            if (numeroOS && cliente && descricao && dataEntrada && dataSaida) {
+                var newOS = {
+                    numeroOS: numeroOS,
+                    cliente: cliente,
+                    descricao: descricao,
+                    dataEntrada: dataEntrada,
+                    dataSaida: dataSaida,
+                    status: status
+                };
+
+                var osList = JSON.parse(localStorage.getItem('osList')) || [];
+                osList.push(newOS);
+                localStorage.setItem('osList', JSON.stringify(osList));
+
+                // Não há redirecionamento, continua na mesma página
+                window.location.reload();
+            } else {
+                alert("Todos os campos são obrigatórios.");
+            }
+        }
+
+        // Função para editar uma OS
+        function editarOS(index) {
+            var osList = JSON.parse(localStorage.getItem('osList')) || [];
+            var os = osList[index];
+            
+            var numeroOS = prompt("Número da OS", os.numeroOS);
+            var cliente = prompt("Nome do Cliente", os.cliente);
+            var descricao = prompt("Descrição", os.descricao);
+            var dataEntrada = prompt("Data de Entrada", os.dataEntrada);
+            var dataSaida = prompt("Data de Saída", os.dataSaida);
+
+            if (numeroOS && cliente && descricao && dataEntrada) {
+                os.numeroOS = numeroOS;
+                os.cliente = cliente;
+                os.descricao = descricao;
+                os.dataEntrada = dataEntrada;
+                os.dataSaida = dataSaida;
+
+                osList[index] = os;
+                localStorage.setItem('osList', JSON.stringify(osList));
+
+                // Após editar, recarrega a página
+                window.location.reload();
+            }
+        }
+
+        // Função para excluir uma OS
+        function excluirOS(index) {
+            var osList = JSON.parse(localStorage.getItem('osList')) || [];
+
+            if (confirm("Tem certeza que deseja excluir esta ordem de serviço?")) {
+                osList.splice(index, 1);
+                localStorage.setItem('osList', JSON.stringify(osList));
+
+                // Após excluir, recarrega a página
+                window.location.reload();
+            }
+        }
+
+        // Função para fechar a tela atual
+        function fecharTela() {
+            window.close(); // Fecha a janela atual
+        }
+    </script>
+</body>
 </html>

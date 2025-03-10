@@ -23,7 +23,10 @@ contextBridge.exposeInMainWorld('api', {
     // Função para abrir a janela de Ajuda
     ajudaWindow: () => ipcRenderer.send('ajuda-window'),
 
-      // Função para abrir a janela de Configuração
-      configuracoesWindow: () => ipcRenderer.send('configuracoes-window')
+    // Função para abrir a janela de Configuração
+    configuracoesWindow: () => ipcRenderer.send('configuracoes-window'),
+
+    // Função para abrir a janela de Lista de Clinete
+    listaclienteWindow: () => ipcRenderer.send('listacliente-window')
 })
     

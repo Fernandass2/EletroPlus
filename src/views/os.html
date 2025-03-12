@@ -4,75 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordem de Serviço - EletroPlus</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
         .container {
-            width: 50%;
-            margin: auto;
-            padding: 20px;
+            width: 100%;
+            height: 100%;
+            max-width: 1010px;
+            max-height: 720px;
+            padding: 10px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
         }
         h1 {
             text-align: center;
             color: #333;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
         form {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
         }
         label {
-            margin: 10px 0 5px;
+            margin: 3px 0;
+            font-size: 0.75rem;
         }
-        input[type="text"], input[type="number"], input[type="date"] {
-            padding: 10px;
-            font-size: 1rem;
+        input, select, textarea {
+            padding: 5px;
+            font-size: 0.75rem;
             border: 1px solid #ddd;
             border-radius: 5px;
+            width: 100%;
+        }
+        textarea {
+            resize: none;
+            height: 35px;
         }
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .btn {
+            flex: 1;
+            padding: 5px;
+            font-size: 0.75rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0 3px;
         }
         .submit-btn {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
         }
         .submit-btn:hover {
             background-color: #45a049;
         }
         .back-btn {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            color: #333;
+            background-color: #555;
+            color: white;
             text-decoration: none;
-            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .back-btn:hover {
-            color: #4CAF50;
+            background-color: #444;
         }
         .logout-btn {
             background-color: #f44336;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
-            margin-top: 20px;
-            display: block;
-            width: 100%;
         }
         .logout-btn:hover {
             background-color: #e53935;
@@ -82,10 +107,9 @@
 <body>
 
     <div class="container">
-        <h1>Ordem de Serviço</h1>
+        <h1>Ordem de Serviço - EletroPlus</h1>
         
-        <!-- Formulário de Ordem de Serviço -->
-        <form action="processar_os.php" method="POST">
+        <form id="osForm">
             <div class="form-group">
                 <label for="cliente">Cliente</label>
                 <input type="text" id="cliente" name="cliente" required>
@@ -95,12 +119,22 @@
                 <label for="produto">Produto</label>
                 <input type="text" id="produto" name="produto" required>
             </div>
-            
+
             <div class="form-group">
-                <label for="defeito">Defeito</label>
-                <input type="text" id="defeito" name="defeito" required>
+                <label for="marca">Marca</label>
+                <input type="text" id="marca" name="marca" required>
+            </div>
+
+            <div class="form-group">
+                <label for="modelo">Modelo</label>
+                <input type="text" id="modelo" name="modelo" required>
             </div>
             
+            <div class="form-group">
+                <label for="defeito">Defeito Reportado</label>
+                <textarea id="defeito" name="defeito" required></textarea>
+            </div>
+
             <div class="form-group">
                 <label for="data">Data de Abertura</label>
                 <input type="date" id="data" name="data" required>
@@ -108,18 +142,73 @@
             
             <div class="form-group">
                 <label for="tecnico">Técnico Responsável</label>
-                <input type="text" id="tecnico" name="tecnico" required>
+                <select id="tecnico" name="tecnico" required>
+                    <option value="">Selecione um técnico</option>
+                    <option value="João Silva">João Silva</option>
+                    <option value="Maria Oliveira">Maria Oliveira</option>
+                    <option value="Carlos Souza">Carlos Souza</option>
+                </select>
             </div>
 
-            <button type="submit" class="submit-btn">Criar Ordem de Serviço</button>
-        </form>
-        
-        <!-- Link para retornar à Lista de Ordens de Serviço -->
-        <a href="relatorios.html" class="back-btn">Voltar à Lista de Ordens de Serviço</a>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="Aguardando Avaliação">Aguardando Avaliação</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Aguardando Aprovação">Aguardando Aprovação</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+            </div>
 
-        <!-- Botão de Sair -->
-        <button class="logout-btn" onclick="window.close()">Sair</button>
+            <div class="form-group">
+                <label for="valor">Valor do Serviço (R$)</label>
+                <input type="number" id="valor" name="valor" step="0.01" min="0">
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn submit-btn" onclick="salvarOS()">Criar OS</button>
+                <a href="relatorios.html" class="btn back-btn">Ir para Relatórios</a>
+                <button type="button" class="btn logout-btn" onclick="window.close()">Sair</button>
+            </div>
+        </form>
     </div>
+
+    <script>
+        function salvarOS() {
+            // Captura os dados do formulário
+            const cliente = document.getElementById('cliente').value;
+            const produto = document.getElementById('produto').value;
+            const marca = document.getElementById('marca').value;
+            const modelo = document.getElementById('modelo').value;
+            const defeito = document.getElementById('defeito').value;
+            const data = document.getElementById('data').value;
+            const tecnico = document.getElementById('tecnico').value;
+            const status = document.getElementById('status').value;
+            const valor = document.getElementById('valor').value;
+
+            // Cria um objeto para a OS
+            const os = {
+                cliente: cliente,
+                produto: produto,
+                marca: marca,
+                modelo: modelo,
+                defeito: defeito,
+                data: data,
+                tecnico: tecnico,
+                status: status,
+                valor: valor
+            };
+
+            // Salva a OS no Local Storage
+            let ordensServicos = JSON.parse(localStorage.getItem('ordensServico')) || [];
+            ordensServicos.push(os);
+            localStorage.setItem('ordensServico', JSON.stringify(ordensServicos));
+
+            // Redireciona para a página de relatórios
+            window.location.href = "relatorios.html";
+        }
+    </script>
 
 </body>
 </html>

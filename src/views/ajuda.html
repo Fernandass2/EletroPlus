@@ -1,140 +1,118 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajuda - EletroPlus</title>
-    <script>
-        // Função para fechar a janela atual
-        function fecharJanela() {
-            window.close();
-        }
-    </script>
+    <title>Ajuda - Eletroplus</title>
     <style>
-        /* Resetando margens e padding */
-        * {
+        /* Configurações da tela */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
             width: 1010px;
             height: 720px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            overflow: hidden; /* Evita que o conteúdo ultrapasse o tamanho da tela */
-            display: flex;
-            flex-direction: column;
+            background-color: #f4f4f4;
+            overflow: hidden;
         }
 
         header {
+            background-color: #2D9CDB;
+            color: white;
+            padding: 10px;
             text-align: center;
-            margin-bottom: 20px;
+        }
+
+        main {
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            margin: 10px;
+            height: calc(100% - 80px); /* Ajuste no espaço do header */
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            font-size: 2em;
-            color: #1d3557;
-        }
-
-        section {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
         }
 
         h2 {
-            font-size: 1.5em;
-            color: #1d3557;
-            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #2D9CDB;
+            margin-bottom: 15px;
         }
 
         p {
+            color: #555;
             font-size: 1em;
+            line-height: 1.4em;
             margin-bottom: 10px;
         }
 
-        ul {
-            list-style-type: none;
-            margin-left: 20px;
+        .faq-section {
+            margin-bottom: 15px;
         }
 
-        ul li {
-            font-size: 1em;
+        .faq-section h3 {
+            font-size: 1.1em;
+            color: #333;
             margin-bottom: 5px;
         }
 
-        button {
-            background-color: #e63946;
-            color: white;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            align-self: center;
-        }
-
-        button:hover {
-            background-color: #d62828;
+        .faq-section p {
+            font-size: 1em;
+            margin-left: 15px;
         }
 
         footer {
             text-align: center;
-            font-size: 0.9em;
-            margin-top: 20px;
+            background-color: #2D9CDB;
+            color: white;
+            padding: 8px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Ajuda</h1>
-        </header>
-        
-        <section>
-            <h2>Como podemos te ajudar?</h2>
-            <p>Se você tiver dúvidas sobre o funcionamento do sistema ou algum problema, consulte a seção abaixo ou entre em contato conosco.</p>
-            <p>Confira as opções e tutoriais disponíveis para facilitar o uso do sistema:</p>
-            <ul>
-                <li><strong>Emissão de Ordem de Serviço:</strong> Veja como gerar e gerenciar ordens de serviço.</li>
-                <li><strong>Cadastro de Clientes:</strong> Como cadastrar novos clientes no sistema.</li>
-                <li><strong>Configurações do Sistema:</strong> Entenda como personalizar as configurações do EletroFix.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Contato</h2>
-            <p>Se precisar de mais ajuda, entre em contato com nosso suporte:</p>
-            <ul>
-                <li><strong>Telefone:</strong> (XX) XXXX-XXXX</li>
-                <li><strong>E-mail:</strong> suporte@tecnofix.com.br</li>
-            </ul>
-        </section>
 
-        <section>
-            <button onclick="fecharJanela()">Sair</button>
-        </section>
+    <header>
+        <h1>Ajuda - Eletroplus</h1>
+    </header>
 
-        <footer>
-            <p>&copy; 2025 EletroPlus. Todos os direitos reservados.</p>
-        </footer>
-    </div>
+    <main>
+        <h2>Bem-vindo à nossa seção de ajuda!</h2>
+        <p>Se você tem dúvidas sobre como usar nossos serviços ou precisa de informações sobre nossos processos, está no lugar certo. Aqui estão algumas das perguntas mais frequentes (FAQ) que podem te ajudar:</p>
+        
+        <div class="faq-section">
+            <h3>1. Como solicitar uma assistência técnica?</h3>
+            <p>Para solicitar um atendimento, basta acessar a seção "Cadastrar OS" no nosso sistema e preencher as informações do cliente e do aparelho. Após isso, a ordem de serviço será gerada e enviada para nossa equipe.</p>
+        </div>
+
+        <div class="faq-section">
+            <h3>2. Quais tipos de eletrodomésticos a Eletroplus atende?</h3>
+            <p>Atendemos diversos tipos de eletrodomésticos, como geladeiras, fogões, micro-ondas, máquinas de lavar, entre outros. Caso não encontre seu aparelho na lista, entre em contato conosco para mais informações.</p>
+        </div>
+
+        <div class="faq-section">
+            <h3>3. Como posso acompanhar o status da minha OS?</h3>
+            <p>Após criar sua ordem de serviço, você pode acompanhar o status diretamente no painel de controle. Você receberá atualizações sobre a sua OS via email ou SMS, conforme preferir.</p>
+        </div>
+
+        <div class="faq-section">
+            <h3>4. Qual é o tempo estimado para a conclusão de uma assistência?</h3>
+            <p>O tempo de reparo pode variar de acordo com a complexidade do serviço. Na maioria dos casos, o tempo estimado é de 2 a 7 dias úteis. Você será informado sobre o prazo estimado ao criar a OS.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Eletroplus - Todos os direitos reservados</p>
+    </footer>
+
 </body>
 </html>

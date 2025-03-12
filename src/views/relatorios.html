@@ -5,216 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório de Ordens de Serviço - EletroPlus</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            width: 1010px;
-            background-color: #f4f4f4;
+            overflow: hidden;
         }
-
         .container {
             width: 100%;
+            max-width: 1010px;
+            max-height: 720px;
+            padding: 10px;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
-
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
         table {
             width: 100%;
+            margin: 20px 0;
             border-collapse: collapse;
-            margin-top: 20px;
         }
-
         th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: center;
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
-
         th {
-            background-color: #e63946;
-            color: white;
+            background-color: #f2f2f2;
         }
-
-        button {
-            background-color: #f1faee;
-            color: #e63946;
+        .btn {
             padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            text-align: center;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 2px;
-            transition: background-color 0.3s;
         }
-
-        button:hover {
-            background-color: #e63946;
-            color: white;
+        .btn:hover {
+            background-color: #45a049;
         }
-
-        .btn-add {
-            margin-top: 20px;
-            background-color: #1d3557;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+        .logout-btn {
+            background-color: #f44336;
         }
-
-        .btn-add:hover {
-            background-color: #457b9d;
+        .logout-btn:hover {
+            background-color: #e53935;
         }
-
-        /* Estilo para o botão de Sair */
-        .btn-sair {
-            background-color: #f1faee;
-            color: #e63946;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .btn-sair:hover {
-            background-color: #e63946;
-            color: white;
-        }
-
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Relatório de Ordens de Serviço</h2>
-        
-        <!-- Botão para adicionar nova OS que redireciona para os.html -->
-        <button class="btn-add" onclick="adicionarOS()">Adicionar Nova Ordem de Serviço</button>
 
-        <table id="relatorioTable">
+    <div class="container">
+        <h1>Relatório de Ordens de Serviço</h1>
+        <table>
             <thead>
                 <tr>
-                    <th>Número OS</th>
                     <th>Cliente</th>
-                    <th>Descrição</th>
-                    <th>Data de Entrada</th>
-                    <th>Data de Saída</th>
+                    <th>Produto</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Defeito</th>
+                    <th>Data</th>
+                    <th>Técnico</th>
                     <th>Status</th>
-                    <th>Ações</th> <!-- Coluna para ações -->
+                    <th>Valor (R$)</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- As ordens de serviço serão exibidas aqui -->
+            <tbody id="ordensTableBody">
+                <!-- As OS serão inseridas aqui via JavaScript -->
             </tbody>
         </table>
-
-        <!-- Botão para sair e fechar a página -->
-        <a href="#" class="btn-sair" onclick="fecharTela()">Sair</a>
+        <button class="btn logout-btn" onclick="window.close()">Sair</button>
     </div>
 
     <script>
-        // Função para carregar as ordens de serviço do localStorage e exibir na tabela
-        window.onload = function() {
-            var osList = JSON.parse(localStorage.getItem('osList')) || [];
-            var tableBody = document.getElementById("relatorioTable").getElementsByTagName("tbody")[0];
+        const ordensServicos = JSON.parse(localStorage.getItem('ordensServico')) || [];
 
-            osList.forEach(function(os, index) {
-                var row = tableBody.insertRow();
+        // Função para criar a linha de cada OS na tabela
+        function exibirOrdens() {
+            const tableBody = document.getElementById('ordensTableBody');
+
+            if (ordensServicos.length === 0) {
+                tableBody.innerHTML = "<tr><td colspan='9'>Nenhuma ordem de serviço encontrada.</td></tr>";
+                return;
+            }
+
+            tableBody.innerHTML = ""; // Limpa a tabela antes de repopular
+
+            ordensServicos.forEach((os, index) => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-index', index); // Define o índice da OS
+
                 row.innerHTML = `
-                    <td>${os.numeroOS}</td>
                     <td>${os.cliente}</td>
-                    <td>${os.descricao}</td>
-                    <td>${os.dataEntrada}</td>
-                    <td>${os.dataSaida}</td>
-                    <td>${os.status}</td>
+                    <td>${os.produto}</td>
+                    <td>${os.marca}</td>
+                    <td>${os.modelo}</td>
+                    <td>${os.defeito}</td>
+                    <td>${os.data}</td>
+                    <td>${os.tecnico}</td>
                     <td>
-                        <button onclick="editarOS(${index})">Editar</button>
-                        <button onclick="excluirOS(${index})">Excluir</button>
+                        <select onchange="editarStatus(${index}, this.value)">
+                            <option value="Aguardando Avaliação" ${os.status === 'Aguardando Avaliação' ? 'selected' : ''}>Aguardando Avaliação</option>
+                            <option value="Em andamento" ${os.status === 'Em andamento' ? 'selected' : ''}>Em andamento</option>
+                            <option value="Aguardando Aprovação" ${os.status === 'Aguardando Aprovação' ? 'selected' : ''}>Aguardando Aprovação</option>
+                            <option value="Concluído" ${os.status === 'Concluído' ? 'selected' : ''}>Concluído</option>
+                            <option value="Cancelado" ${os.status === 'Cancelado' ? 'selected' : ''}>Cancelado</option>
+                        </select>
                     </td>
+                    <td>${os.valor}</td>
                 `;
+                tableBody.appendChild(row);
             });
         }
 
-        // Função para adicionar nova OS
-        function adicionarOS() {
-            var numeroOS = prompt("Número da OS");
-            var cliente = prompt("Nome do Cliente");
-            var descricao = prompt("Descrição do Serviço");
-            var dataEntrada = prompt("Data de Entrada");
-            var dataSaida = prompt("Data de Saída");
-            var status = "Em andamento"; // Status inicial
+        // Função para editar o status da OS
+        function editarStatus(index, status) {
+            ordensServicos[index].status = status;
+            localStorage.setItem('ordensServico', JSON.stringify(ordensServicos));
+            atualizarStatusNaTabela(index, status); // Atualiza a tabela sem recriar
+        }
 
-            if (numeroOS && cliente && descricao && dataEntrada && dataSaida) {
-                var newOS = {
-                    numeroOS: numeroOS,
-                    cliente: cliente,
-                    descricao: descricao,
-                    dataEntrada: dataEntrada,
-                    dataSaida: dataSaida,
-                    status: status
-                };
-
-                var osList = JSON.parse(localStorage.getItem('osList')) || [];
-                osList.push(newOS);
-                localStorage.setItem('osList', JSON.stringify(osList));
-
-                // Não há redirecionamento, continua na mesma página
-                window.location.reload();
-            } else {
-                alert("Todos os campos são obrigatórios.");
+        // Função para atualizar o status na tabela sem recriar a linha
+        function atualizarStatusNaTabela(index, status) {
+            const tableRows = document.querySelectorAll('tr[data-index]');
+            const row = tableRows[index];
+            const statusCell = row.querySelector('select');
+            if (statusCell) {
+                statusCell.value = status; // Atualiza o valor do select na linha
             }
         }
 
-        // Função para editar uma OS
-        function editarOS(index) {
-            var osList = JSON.parse(localStorage.getItem('osList')) || [];
-            var os = osList[index];
-            
-            var numeroOS = prompt("Número da OS", os.numeroOS);
-            var cliente = prompt("Nome do Cliente", os.cliente);
-            var descricao = prompt("Descrição", os.descricao);
-            var dataEntrada = prompt("Data de Entrada", os.dataEntrada);
-            var dataSaida = prompt("Data de Saída", os.dataSaida);
-
-            if (numeroOS && cliente && descricao && dataEntrada) {
-                os.numeroOS = numeroOS;
-                os.cliente = cliente;
-                os.descricao = descricao;
-                os.dataEntrada = dataEntrada;
-                os.dataSaida = dataSaida;
-
-                osList[index] = os;
-                localStorage.setItem('osList', JSON.stringify(osList));
-
-                // Após editar, recarrega a página
-                window.location.reload();
-            }
-        }
-
-        // Função para excluir uma OS
-        function excluirOS(index) {
-            var osList = JSON.parse(localStorage.getItem('osList')) || [];
-
-            if (confirm("Tem certeza que deseja excluir esta ordem de serviço?")) {
-                osList.splice(index, 1);
-                localStorage.setItem('osList', JSON.stringify(osList));
-
-                // Após excluir, recarrega a página
-                window.location.reload();
-            }
-        }
-
-        // Função para fechar a tela atual
-        function fecharTela() {
-            window.close(); // Fecha a janela atual
-        }
+        // Exibe as ordens de serviço assim que a página for carregada
+        window.onload = exibirOrdens;
     </script>
+
 </body>
 </html>

@@ -1,104 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Clientes - EletroPlus</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Lista de Clientes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
         table, th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
         }
         th, td {
             padding: 10px;
             text-align: left;
         }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .add-client-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
+        .edit-btn {
             cursor: pointer;
-            text-align: center;
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            text-decoration: none;
-            border-radius: 5px;
+            color: #007BFF;
+            text-decoration: underline;
         }
-        .add-client-btn:hover {
-            background-color: #45a049;
+        .edit-btn:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 <body>
+    <h1>Lista de Clientes</h1>
 
-    <div class="container">
-        <h1>Lista de Clientes</h1>
-        
-        <!-- Botão para adicionar cliente (vinculado ao cadastro de cliente) -->
-        <a href="cliente.html" class="add-client-btn">Adicionar Novo Cliente</a>
-        
-        <!-- Tabela de Clientes -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aqui será carregado os clientes cadastrados -->
-                <tr>
-                    <td>1</td>
-                    <td>João Silva</td>
-                    <td>joao@exemplo.com</td>
-                    <td>(11) 98765-4321</td>
-                    <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ana Souza</td>
-                    <td>ana@exemplo.com</td>
-                    <td>(21) 12345-6789</td>
-                    <td><a href="#">Editar</a> | <a href="#">Excluir</a></td>
-                </tr>
-                <!-- Exemplo, os dados devem ser gerados dinamicamente a partir do cadastro -->
-            </tbody>
-        </table>
-    </div>
+    <!-- Tabela onde os dados dos clientes serão inseridos -->
+    <table id="clienteTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- A lista de clientes será preenchida aqui via JavaScript -->
+        </tbody>
+    </table>
 
+    <script>
+        // Dados de exemplo (normalmente seriam puxados de um banco de dados)
+        const clientes = [
+            { id: 1, nome: 'João Silva', email: 'joao@example.com', telefone: '1234-5678' },
+            { id: 2, nome: 'Maria Oliveira', email: 'maria@example.com', telefone: '9876-5432' }
+        ];
+
+        // Função para renderizar a lista de clientes na tabela
+        function renderCliente() {
+            const clienteTable = document.querySelector('#clientesTable tbody');
+            clienteTable.innerHTML = ''; // Limpar a tabela antes de adicionar novos dados
+
+            cliente.forEach(cliente => {
+                // Cria uma nova linha para cada cliente
+                const row = document.createElement('tr');
+                
+                // Cria as células com as informações do cliente
+                row.innerHTML = `
+                    <td>${cliente.id}</td>
+                    <td>${cliente.nome}</td>
+                    <td>${cliente.email}</td>
+                    <td>${cliente.telefone}</td>
+                    <td><span class="edit-btn">Editar</span></td>
+                `;
+                
+                // Adiciona a linha à tabela
+                clienteTable.appendChild(row);
+
+                // Adiciona o evento de clique para editar o cliente
+                row.querySelector('.edit-btn').addEventListener('click', () => editarCliente(cliente));
+            });
+        }
+
+        // Função para editar os dados do cliente
+        function editarCliente(cliente) {
+            // Prompt para o usuário editar o email e o telefone
+            const novoEmail = prompt('Digite o novo email:', cliente.email);
+            const novoTelefone = prompt('Digite o novo telefone:', cliente.telefone);
+
+            // Verifica se os dados não são nulos e atualiza
+            if (novoEmail && novoTelefone) {
+                cliente.email = novoEmail;
+                cliente.telefone = novoTelefone;
+
+                // Re-renderiza a tabela com os dados atualizados
+                renderCliente();
+            }
+        }
+
+        // Renderiza os clientes quando a página for carregada
+        renderCliente();
+    </script>
 </body>
 </html>

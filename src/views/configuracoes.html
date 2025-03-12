@@ -11,35 +11,74 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
+
+        /* Tema claro */
+        .light-theme {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Tema escuro */
+        .dark-theme {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+
         .container {
-            width: 50%;
-            margin: auto;
+            width: 100%;
+            max-width: 1010px;
+            max-height: 720px;
             padding: 20px;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            overflow: hidden;
         }
+
         h1 {
             text-align: center;
-            color: #333;
+            color: inherit;
         }
+
         form {
             display: flex;
             flex-direction: column;
+            flex: 1;
+            overflow-y: auto;
         }
+
         label {
             margin: 10px 0 5px;
         }
+
         input[type="text"], input[type="email"], input[type="password"], input[type="checkbox"], select {
             padding: 10px;
             font-size: 1rem;
             border: 1px solid #ddd;
             border-radius: 5px;
+            width: 100%;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
-        .submit-btn {
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .submit-btn, .logout-btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
@@ -47,39 +86,23 @@
             cursor: pointer;
             border-radius: 5px;
             font-size: 1rem;
+            width: 48%;
         }
-        .submit-btn:hover {
+
+        .submit-btn:hover, .logout-btn:hover {
             background-color: #45a049;
         }
-        .back-btn {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            color: #333;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        .back-btn:hover {
-            color: #4CAF50;
-        }
+
         .logout-btn {
             background-color: #f44336;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1rem;
-            margin-top: 20px;
-            display: block;
-            width: 100%;
         }
+
         .logout-btn:hover {
             background-color: #e53935;
         }
     </style>
 </head>
-<body>
+<body class="light-theme">
 
     <div class="container">
         <h1>Configurações</h1>
@@ -98,7 +121,7 @@
 
             <div class="form-group">
                 <label for="tema">Tema</label>
-                <select id="tema" name="tema">
+                <select id="tema" name="tema" onchange="alterarTema()">
                     <option value="claro">Claro</option>
                     <option value="escuro">Escuro</option>
                 </select>
@@ -109,13 +132,28 @@
                 <input type="checkbox" id="notificacoes" name="notificacoes" checked>
             </div>
 
-            <button type="submit" class="submit-btn">Salvar Configurações</button>
-        </form>
-        
+            <div class="button-group">
+                <!-- Botão de Salvar -->
+                <button type="submit" class="submit-btn">Salvar Configurações</button>
 
-        <!-- Botão de Sair -->
-        <button class="logout-btn" onclick="window.close()">Sair</button>
+                <!-- Botão de Sair -->
+                <button type="button" class="logout-btn" onclick="window.close()">Sair</button>
+            </div>
+        </form>
     </div>
+
+    <script>
+        function alterarTema() {
+            var tema = document.getElementById("tema").value;
+            if (tema === "escuro") {
+                document.body.classList.remove("light-theme");
+                document.body.classList.add("dark-theme");
+            } else {
+                document.body.classList.remove("dark-theme");
+                document.body.classList.add("light-theme");
+            }
+        }
+    </script>
 
 </body>
 </html>

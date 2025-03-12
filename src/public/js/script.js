@@ -16,3 +16,4 @@ function obterData() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('dataAtual').innerHTML = obterData()
 })
+

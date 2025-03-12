@@ -1,199 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Cliente - EletroPlus</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            width: 100%;
-            height: 100%;
-            max-width: 1010px;
-            max-height: 720px;
-            padding: 10px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex: 1;
-        }
-        label {
-            margin: 3px 0;
-            font-size: 0.75rem;
-        }
-        input, select {
-            padding: 5px;
-            font-size: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 100%;
-        }
-        .form-group {
-            margin-bottom: 5px;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .btn {
-            flex: 1;
-            padding: 5px;
-            font-size: 0.75rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-            margin: 0 3px;
-        }
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .submit-btn:hover {
-            background-color: #45a049;
-        }
-        .back-btn {
-            background-color: #555;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-btn:hover {
-            background-color: #444;
-        }
-        .logout-btn {
-            background-color: #f44336;
-            color: white;
-        }
-        .logout-btn:hover {
-            background-color: #e53935;
-        }
-    </style>
+    <title>Cadastro de clientes</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../public/css/s.css">
+    <!-- impedir a execução de scripts externos ou não autorizados -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
 </head>
+
 <body>
     <div class="container">
-        <h1>Cadastro de Cliente</h1>
-        
-        <form id="clienteForm">
-            <div class="form-group">
-                <label for="nome">Nome Completo</label>
-                <input type="text" id="nome" name="nome" required>
+        <form id="frmClient" class="mt-2 row g-3">
+            <!-- Buscar cliente -->
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="searchClient" maxlength="30" spellcheck="false">
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary" id="btnRead" onclick="searchClient()">Buscar</button>
             </div>
             
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" id="cnpj" name="cnpj" required>
+            <!-- Linha -->
+            <hr class="mt-4 border border-primary border -1">
+
+            <!-- Nome -->
+            <div class="col-md-8">
+                <label for="inputNameClient" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="inputNameClient" spellcheck="false" required maxlength="30">
             </div>
 
-            <div class="form-group">
-                <label for="logradouro">Logradouro</label>
-                <input type="text" id="logradouro" name="logradouro" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="endereco">Endereço</label>
-                <input type="text" id="endereco" name="endereco" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="cidade">Cidade</label>
-                <input type="text" id="cidade" name="cidade" required>
+            <!-- CPF -->
+            <div class="col-md-4">
+                <label for="inputCPFClient" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="inputCPFClient" spellcheck="false" maxlength="15">
             </div>
 
-            <div class="form-group">
-                <label for="estado">Estado</label>
-                <select id="estado" name="estado" required>
-                    <option value="">Selecione o Estado</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
+            <!-- Email -->
+            <div class="col-md-6">
+                <label for="inputEmailClient" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="inputEmailClient" spellcheck="false" maxlength="30">
+            </div>
+
+            <!-- Telefone -->
+            <div class="col-md-4">
+                <label for="inputPhoneClient" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="inputPhoneClient" spellcheck="false" maxlength="15"
+                    required>
+            </div>
+
+            <!-- CEP -->
+            <div class="col-md-2">
+                <label for="inputCEPClient" class="form-label">CEP</label>
+                <input type="text" class="form-control" id="inputCEPClient" spellcheck="false" maxlength="9" required onblur="buscarCEP()">
+            </div>
+
+            <!-- Logradouro -->
+            <div class="col-md-6">
+                <label for="inputAddressClient" class="form-label">Logradouro</label>
+                <input type="text" class="form-control" id="inputAddressClient" spellcheck="false" maxlength="30"
+                    required>
+            </div>
+
+            <!-- Número -->
+            <div class="col-md-3">
+                <label for="inputNumberClient" class="form-label">Número</label>
+                <input type="text" class="form-control" id="inputNumberClient" spellcheck="false" maxlength="5"
+                    required>
+            </div>
+
+            <!-- Complemento -->
+            <div class="col-md-3">
+                <label for="inputComplementClient" class="form-label">Complemento</label>
+                <input type="text" class="form-control" id="inputComplementClient" spellcheck="false" maxlength="12">
+            </div>
+
+            <!-- Bairro -->
+            <div class="col-md-5">
+                <label for="inputNeighborhoodClient" class="form-label">Bairro</label>
+                <input type="text" class="form-control" id="inputNeighborhoodClient" spellcheck="false" maxlength="30"
+                    required>
+            </div>
+
+            <!-- Cidade -->
+            <div class="col-md-4">
+                <label for="inputCityClient" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="inputCityClient" spellcheck="false" maxlength="30" required>
+            </div>
+
+            <!-- UF -->
+            <div class="col-md-3">
+                <label for="inputUFClient" class="form-label">UF</label>
+                <select class="form-select" id="inputUFClient" name="UF" required>
+                    <option value=""></option>
+                    <option value="AC">AC - Acre</option>
+                    <option value="AL">AL - Alagoas</option>
+                    <option value="AP">AP - Amapá</option>
+                    <option value="AM">AM - Amazonas</option>
+                    <option value="BA">BA - Bahia</option>
+                    <option value="CE">CE - Ceará</option>
+                    <option value="DF">DF - Distrito Federal</option>
+                    <option value="ES">ES - Espírito Santo</option>
+                    <option value="GO">GO - Goiás</option>
+                    <option value="MA">MA - Maranhão</option>
+                    <option value="MT">MT - Mato Grosso</option>
+                    <option value="MS">MS - Mato Grosso do Sul</option>
+                    <option value="MG">MG - Minas Gerais</option>
+                    <option value="PA">PA - Pará</option>
+                    <option value="PB">PB - Paraíba</option>
+                    <option value="PR">PR - Paraná</option>
+                    <option value="PE">PE - Pernambuco</option>
+                    <option value="PI">PI - Piauí</option>
+                    <option value="RJ">RJ - Rio de Janeiro</option>
+                    <option value="RN">RN - Rio Grande do Norte</option>
+                    <option value="RS">RS - Rio Grande do Sul</option>
+                    <option value="RO">RO - Rondônia</option>
+                    <option value="RR">RR - Roraima</option>
+                    <option value="SC">SC - Santa Catarina</option>
+                    <option value="SP">SP - São Paulo</option>
+                    <option value="SE">SE - Sergipe</option>
+                    <option value="TO">TO - Tocantins</option>
                 </select>
             </div>
-            
-            <div class="button-group">
-                <button type="submit" class="btn submit-btn">Cadastrar Cliente</button>
-                <a href="listacliente.html" class="btn back-btn">Voltar à Lista</a>
-                <button type="button" class="btn logout-btn" onclick="window.close()">Sair</button>
+
+            <!-- Botões -->
+            <div class="mt-5">
+                <button type="submit" class="btn btn-success" id="btnCreate">Adicionar</button>
+                <button type="submit" class="btn btn-warning" id="btnUpdate">Editar</button>
+                <button type="button" class="btn btn-danger" id="btnDelete">Excluir</button>
+                <button type="reset" class="btn" id="btnReset" onclick="resetForm()"></button>
             </div>
+
         </form>
     </div>
 
-    <script>
-        document.getElementById('clienteForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
-            let cliente = {
-                id: clientes.length + 1,
-                nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                telefone: document.getElementById('telefone').value
-            };
-            clientes.push(cliente);
-            localStorage.setItem('clientes', JSON.stringify(clientes));
-            alert('Cliente cadastrado com sucesso!');
-            window.location.href = 'listacliente.html';
-        })
+    <!-- Bootstrap -->
+    <script src="../public/js/bootstrap.min.js"></script>
+    <!-- renderizador -->
+     <script src="rendererCliente.js"></script>
+</body>
+
+</html>

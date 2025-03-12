@@ -1,214 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordem de Serviço - EletroPlus</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            width: 100%;
-            height: 100%;
-            max-width: 1010px;
-            max-height: 720px;
-            padding: 10px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex: 1;
-        }
-        label {
-            margin: 3px 0;
-            font-size: 0.75rem;
-        }
-        input, select, textarea {
-            padding: 5px;
-            font-size: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 100%;
-        }
-        textarea {
-            resize: none;
-            height: 35px;
-        }
-        .form-group {
-            margin-bottom: 5px;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .btn {
-            flex: 1;
-            padding: 5px;
-            font-size: 0.75rem;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            text-align: center;
-            margin: 0 3px;
-        }
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .submit-btn:hover {
-            background-color: #45a049;
-        }
-        .back-btn {
-            background-color: #555;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .back-btn:hover {
-            background-color: #444;
-        }
-        .logout-btn {
-            background-color: #f44336;
-            color: white;
-        }
-        .logout-btn:hover {
-            background-color: #e53935;
-        }
-    </style>
+    <title>Cadastro de Ordem de Serviço</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="../public/css/s.css">
+    <!-- impedir a execução de scripts externos ou não autorizados -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
 </head>
+
 <body>
-
     <div class="container">
-        <h1>Ordem de Serviço - EletroPlus</h1>
-        
-        <form id="osForm">
-            <div class="form-group">
-                <label for="cliente">Cliente</label>
-                <input type="text" id="cliente" name="cliente" required>
+        <form id="frmOS" class="mt-2 row g-3">
+            <!-- Buscar OS -->
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="searchOS" maxlength="30" spellcheck="false" placeholder="Buscar OS">
             </div>
-            
-            <div class="form-group">
-                <label for="produto">Produto</label>
-                <input type="text" id="produto" name="produto" required>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary" id="btnReadOS" onclick="searchOS()">Buscar</button>
             </div>
 
-            <div class="form-group">
-                <label for="marca">Marca</label>
-                <input type="text" id="marca" name="marca" required>
+            <!-- Linha -->
+            <hr class="mt-4 border border-primary">
+
+            <!-- Número da OS -->
+            <div class="col-md-6">
+                <label for="inputOSNumber" class="form-label">Número da OS</label>
+                <input type="text" class="form-control" id="inputOSNumber" spellcheck="false" required maxlength="10">
             </div>
 
-            <div class="form-group">
-                <label for="modelo">Modelo</label>
-                <input type="text" id="modelo" name="modelo" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="defeito">Defeito Reportado</label>
-                <textarea id="defeito" name="defeito" required></textarea>
+            <!-- Cliente -->
+            <div class="col-md-6">
+                <label for="inputClientOS" class="form-label">Cliente</label>
+                <input type="text" class="form-control" id="inputClientOS" spellcheck="false" required maxlength="30">
             </div>
 
-            <div class="form-group">
-                <label for="data">Data de Abertura</label>
-                <input type="date" id="data" name="data" required>
+            <!-- Data de Abertura -->
+            <div class="col-md-4">
+                <label for="inputOpenDate" class="form-label">Data de Abertura</label>
+                <input type="date" class="form-control" id="inputOpenDate" required>
             </div>
-            
-            <div class="form-group">
-                <label for="tecnico">Técnico Responsável</label>
-                <select id="tecnico" name="tecnico" required>
-                    <option value="">Selecione um técnico</option>
-                    <option value="João Silva">João Silva</option>
-                    <option value="Maria Oliveira">Maria Oliveira</option>
-                    <option value="Carlos Souza">Carlos Souza</option>
+
+            <!-- Data de Previsão -->
+            <div class="col-md-4">
+                <label for="inputDueDate" class="form-label">Data de Previsão</label>
+                <input type="date" class="form-control" id="inputDueDate" required>
+            </div>
+
+            <!-- Status -->
+            <div class="col-md-4">
+                <label for="inputStatusOS" class="form-label">Status</label>
+                <select class="form-select" id="inputStatusOS" name="status" required>
+                    <option value="">Selecione o Status</option>
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em Andamento">Em Andamento</option>
+                    <option value="Fechado">Fechado</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" name="status" required>
-                    <option value="Aguardando Avaliação">Aguardando Avaliação</option>
-                    <option value="Em andamento">Em andamento</option>
-                    <option value="Aguardando Aprovação">Aguardando Aprovação</option>
-                    <option value="Concluído">Concluído</option>
-                    <option value="Cancelado">Cancelado</option>
-                </select>
+            <!-- Descrição do Problema -->
+            <div class="col-md-12">
+                <label for="inputDescription" class="form-label">Descrição do Problema</label>
+                <textarea class="form-control" id="inputDescription" rows="4" spellcheck="false" maxlength="300" required></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="valor">Valor do Serviço (R$)</label>
-                <input type="number" id="valor" name="valor" step="0.01" min="0">
+            <!-- Técnico Responsável -->
+            <div class="col-md-6">
+                <label for="inputTechnician" class="form-label">Técnico Responsável</label>
+                <input type="text" class="form-control" id="inputTechnician" spellcheck="false" maxlength="30" required>
             </div>
 
-            <div class="button-group">
-                <button type="button" class="btn submit-btn" onclick="salvarOS()">Criar OS</button>
-                <a href="relatorios.html" class="btn back-btn">Ir para Relatórios</a>
-                <button type="button" class="btn logout-btn" onclick="window.close()">Sair</button>
+            <!-- Valor Orçado -->
+            <div class="col-md-6">
+                <label for="inputEstimatedValue" class="form-label">Valor Orçado</label>
+                <input type="number" class="form-control" id="inputEstimatedValue" step="0.01" required>
             </div>
+
+            <!-- Botões -->
+            <div class="mt-5">
+                <button type="submit" class="btn btn-success" id="btnCreateOS">Adicionar</button>
+                <button type="submit" class="btn btn-warning" id="btnUpdateOS">Editar</button>
+                <button type="button" class="btn btn-danger" id="btnDeleteOS">Excluir</button>
+                <button type="reset" class="btn btn-secondary" id="btnResetOS" onclick="resetForm()">Resetar</button>
+            </div>
+
         </form>
     </div>
 
-    <script>
-        function salvarOS() {
-            // Captura os dados do formulário
-            const cliente = document.getElementById('cliente').value;
-            const produto = document.getElementById('produto').value;
-            const marca = document.getElementById('marca').value;
-            const modelo = document.getElementById('modelo').value;
-            const defeito = document.getElementById('defeito').value;
-            const data = document.getElementById('data').value;
-            const tecnico = document.getElementById('tecnico').value;
-            const status = document.getElementById('status').value;
-            const valor = document.getElementById('valor').value;
-
-            // Cria um objeto para a OS
-            const os = {
-                cliente: cliente,
-                produto: produto,
-                marca: marca,
-                modelo: modelo,
-                defeito: defeito,
-                data: data,
-                tecnico: tecnico,
-                status: status,
-                valor: valor
-            };
-
-            // Salva a OS no Local Storage
-            let ordensServicos = JSON.parse(localStorage.getItem('ordensServico')) || [];
-            ordensServicos.push(os);
-            localStorage.setItem('ordensServico', JSON.stringify(ordensServicos));
-
-            // Redireciona para a página de relatórios
-            window.location.href = "relatorios.html";
-        }
-    </script>
-
+    <!-- Bootstrap -->
+    <script src="../public/js/bootstrap.min.js"></script>
+    <!-- renderizador -->
+    <script src="rendererOS.js"></script>
 </body>
+
 </html>
